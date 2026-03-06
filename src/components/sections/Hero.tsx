@@ -73,7 +73,7 @@ export default function Hero() {
       </div>
 
       {/* Content — vertically centered with slight bottom bias (golden ratio) */}
-      <Container className="relative z-10 pt-[45vh] pb-12 lg:pt-0 lg:pb-6 lg:flex lg:items-center lg:min-h-[calc(100vh-120px)]">
+      <Container className="relative z-10 pt-[35vh] pb-12 lg:pt-0 lg:pb-6 lg:flex lg:items-center lg:min-h-[calc(100vh-120px)]">
         <div className="max-w-3xl hero-stagger">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm text-white/90 mb-8 border border-white/15 hero-fade-item">
