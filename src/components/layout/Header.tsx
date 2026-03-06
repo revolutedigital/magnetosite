@@ -69,6 +69,11 @@ export default function Header() {
     };
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
+
   return (
     <>
       {/* Top bar */}
@@ -189,7 +194,7 @@ export default function Header() {
 
         {/* Mobile nav */}
         {mobileOpen && (
-          <div className="lg:hidden border-t border-border bg-white">
+          <div className="lg:hidden border-t border-border bg-white fixed inset-x-0 top-20 bottom-0 z-50 overflow-y-auto">
             <Container className="py-4">
               <nav className="flex flex-col gap-1" aria-label="Navegação mobile">
                 {navigation.map((item) => (
@@ -223,10 +228,7 @@ export default function Header() {
                 ))}
               </nav>
               <div className="mt-4 pt-4 border-t border-border">
-                <Button size="sm" href="/contato" className="w-full">
-                  Solicitar Orçamento
-                </Button>
-                <div className="flex flex-col gap-2 mt-4 text-sm text-muted">
+                <div className="flex flex-col gap-2 text-sm text-muted">
                   <a href="tel:+551532021496" className="flex items-center gap-2">
                     <Phone size={14} aria-hidden="true" /> (15) 3202-1496
                   </a>

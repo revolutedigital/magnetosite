@@ -19,12 +19,19 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-[calc(100vh-80px)] lg:min-h-[calc(100vh-120px)] flex items-center overflow-hidden bg-secondary">
-      {/* Parallax background image */}
+    <section className="relative min-h-[calc(100vh-80px)] lg:min-h-[calc(100vh-120px)] flex items-end lg:items-center overflow-hidden bg-secondary">
+      {/* Parallax background image — desktop */}
       <div
         ref={bgRef}
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat will-change-transform"
+        className="absolute inset-0 z-0 hidden lg:block bg-cover bg-center bg-no-repeat will-change-transform"
         style={{ backgroundImage: "url('/images/bg_02_desktop_magneto.webp?v=3')" }}
+        aria-hidden="true"
+      />
+
+      {/* Background image — mobile */}
+      <div
+        className="absolute inset-0 z-0 lg:hidden bg-cover bg-top bg-no-repeat"
+        style={{ backgroundImage: "url('/images/bg_02_mobile_magneto.webp')" }}
         aria-hidden="true"
       />
 
@@ -35,12 +42,20 @@ export default function Hero() {
         aria-hidden="true"
       />
 
-      {/* Gradient overlay — protects text on left, reveals photo on right */}
+      {/* Gradient overlay — protects text on left (desktop), bottom (mobile) */}
       <div
-        className="absolute inset-0 z-[2]"
+        className="absolute inset-0 z-[2] hidden lg:block"
         style={{
           background:
             "linear-gradient(to right, rgba(10,15,26,0.92) 0%, rgba(10,15,26,0.7) 45%, transparent 70%)",
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="absolute inset-0 z-[2] lg:hidden"
+        style={{
+          background:
+            "linear-gradient(to bottom, transparent 25%, rgba(10,15,26,0.75) 45%, rgba(10,15,26,0.95) 65%)",
         }}
         aria-hidden="true"
       />
@@ -58,7 +73,7 @@ export default function Hero() {
       </div>
 
       {/* Content — vertically centered with slight bottom bias (golden ratio) */}
-      <Container className="relative z-10 py-12 lg:pt-0 lg:pb-6 flex items-center min-h-[calc(100vh-80px)] lg:min-h-[calc(100vh-120px)]">
+      <Container className="relative z-10 pt-[45vh] pb-12 lg:pt-0 lg:pb-6 lg:flex lg:items-center lg:min-h-[calc(100vh-120px)]">
         <div className="max-w-3xl hero-stagger">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm text-white/90 mb-8 border border-white/15 hero-fade-item">
