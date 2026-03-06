@@ -178,9 +178,11 @@ export default function Header() {
 
           {/* CTA + Mobile toggle */}
           <div className="flex items-center gap-3">
-            <Button size="sm" href="/contato" className="hidden lg:inline-flex">
-              Solicitar Orçamento
-            </Button>
+            <div className="hidden lg:block">
+              <Button size="sm" href="/contato">
+                Solicitar Orçamento
+              </Button>
+            </div>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="lg:hidden p-2 rounded-lg hover:bg-surface transition-colors"
