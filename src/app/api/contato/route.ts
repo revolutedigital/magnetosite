@@ -54,7 +54,7 @@ export async function POST(request: Request) {
 
     await transporter.sendMail({
       from: `"Site Magneto Brasil" <${process.env.SMTP_USER}>`,
-      to: "magneto@magnetobrasil.com.br",
+      to: "davidsrevolute@gmail.com",
       replyTo: email,
       subject: `[Site] ${tipoLabel[tipo] || "Contato"} - ${nome}`,
       html: `
