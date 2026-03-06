@@ -4,11 +4,21 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
 import Container from "@/components/ui/Container";
-import { Award, Target, Eye, Heart, Building2, Globe, Users, Shield } from "lucide-react";
+import { Target, Eye, Heart, Building2, Globe, Users, Shield } from "lucide-react";
+import Reveal from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
   title: "Empresa",
   description: "Conheça a Magneto Brasil — líder em freios e embreagens eletromagnéticos desde 2009.",
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Início", item: "https://magnetobrasil.com.br" },
+    { "@type": "ListItem", position: 2, name: "Empresa", item: "https://magnetobrasil.com.br/empresa" },
+  ],
 };
 
 const timeline = [
@@ -29,11 +39,13 @@ const values = [
 export default function EmpresaPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <Header />
-      <main>
+      <main id="main-content">
         {/* Hero */}
-        <section className="py-24 section-dark relative overflow-hidden">
+        <section className="py-24 section-dark hero-grid-pattern relative overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[100px]" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px]" />
           <Container className="relative z-10">
             <span className="text-sm font-semibold text-primary uppercase tracking-wider font-[family-name:var(--font-heading)]">
               Sobre Nós
@@ -42,7 +54,7 @@ export default function EmpresaPage() {
               Engenharia de Precisão{" "}
               <span className="text-primary">desde 2009</span>
             </h1>
-            <p className="text-lg text-slate-400 max-w-3xl leading-relaxed">
+            <p className="text-lg text-slate-300 max-w-3xl leading-relaxed">
               A Magneto Eletropneumática é especializada em projeto, fabricação e aplicação de
               freios e embreagens eletromagnéticos, além de equipamentos de transmissão mecânica.
               Sediada em Sorocaba/SP, atendemos fabricantes de máquinas e equipamentos no Brasil,
@@ -54,14 +66,16 @@ export default function EmpresaPage() {
         {/* Galeria da Fábrica */}
         <section className="py-24">
           <Container>
-            <div className="text-center mb-12">
-              <span className="text-sm font-semibold text-primary uppercase tracking-wider font-[family-name:var(--font-heading)]">
-                Nossa Estrutura
-              </span>
-              <h2 className="text-3xl lg:text-5xl font-bold text-foreground mt-3 font-[family-name:var(--font-heading)]">
-                Conheça Nossa Fábrica
-              </h2>
-            </div>
+            <Reveal>
+              <div className="text-center mb-12">
+                <span className="text-sm font-semibold text-primary uppercase tracking-wider font-[family-name:var(--font-heading)]">
+                  Nossa Estrutura
+                </span>
+                <h2 className="text-3xl lg:text-5xl font-bold text-foreground mt-3 font-[family-name:var(--font-heading)]">
+                  Conheça Nossa Fábrica
+                </h2>
+              </div>
+            </Reveal>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {[
                 { src: "/images/empresa/fabrica-1.jpg", alt: "Fábrica Magneto - Produção" },
@@ -85,19 +99,21 @@ export default function EmpresaPage() {
         </section>
 
         {/* Values */}
-        <section className="py-24 section-alt">
+        <section className="py-24">
           <Container>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {values.map((item) => {
+              {values.map((item, index) => {
                 const Icon = item.icon;
                 return (
-                  <div key={item.title} className="text-center p-8 rounded-2xl border border-border hover:border-primary/30 transition-colors">
+                  <Reveal key={item.title} delay={Math.min(index + 1, 3) as 1 | 2 | 3}>
+                  <div className="text-center p-8 rounded-2xl border border-border hover:border-primary/30 transition-colors">
                     <div className="inline-flex items-center justify-center w-14 h-14 bg-primary/10 rounded-2xl mb-4">
                       <Icon size={24} className="text-primary" />
                     </div>
                     <h3 className="text-xl font-bold text-foreground mb-3 font-[family-name:var(--font-heading)]">{item.title}</h3>
                     <p className="text-sm text-muted leading-relaxed">{item.description}</p>
                   </div>
+                  </Reveal>
                 );
               })}
             </div>
@@ -107,14 +123,16 @@ export default function EmpresaPage() {
         {/* Timeline */}
         <section className="py-24 section-alt">
           <Container>
-            <div className="text-center mb-16">
-              <span className="text-sm font-semibold text-primary uppercase tracking-wider font-[family-name:var(--font-heading)]">
-                Nossa Trajetória
-              </span>
-              <h2 className="text-3xl lg:text-5xl font-bold text-foreground mt-3 font-[family-name:var(--font-heading)]">
-                Linha do Tempo
-              </h2>
-            </div>
+            <Reveal>
+              <div className="text-center mb-16">
+                <span className="text-sm font-semibold text-primary uppercase tracking-wider font-[family-name:var(--font-heading)]">
+                  Nossa Trajetória
+                </span>
+                <h2 className="text-3xl lg:text-5xl font-bold text-foreground mt-3 font-[family-name:var(--font-heading)]">
+                  Linha do Tempo
+                </h2>
+              </div>
+            </Reveal>
 
             <div className="relative">
               {/* Vertical line */}
@@ -148,11 +166,13 @@ export default function EmpresaPage() {
         {/* Differentials */}
         <section className="py-24">
           <Container>
-            <div className="text-center mb-16">
-              <h2 className="text-3xl lg:text-5xl font-bold text-foreground font-[family-name:var(--font-heading)]">
-                Por que a Magneto?
-              </h2>
-            </div>
+            <Reveal>
+              <div className="text-center mb-16">
+                <h2 className="text-3xl lg:text-5xl font-bold text-foreground font-[family-name:var(--font-heading)]">
+                  Por que a Magneto?
+                </h2>
+              </div>
+            </Reveal>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 { icon: Building2, title: "Fabricação Própria", desc: "Desenvolvimento e produção interna com tecnologia de ponta." },
@@ -176,23 +196,25 @@ export default function EmpresaPage() {
         {/* Representations */}
         <section className="py-24 section-alt">
           <Container>
-            <div className="text-center mb-16">
-              <span className="text-sm font-semibold text-primary uppercase tracking-wider font-[family-name:var(--font-heading)]">
-                Representações
-              </span>
-              <h2 className="text-3xl lg:text-5xl font-bold text-foreground mt-3 font-[family-name:var(--font-heading)]">
-                Parceiros Internacionais
-              </h2>
-            </div>
+            <Reveal>
+              <div className="text-center mb-16">
+                <span className="text-sm font-semibold text-primary uppercase tracking-wider font-[family-name:var(--font-heading)]">
+                  Representações
+                </span>
+                <h2 className="text-3xl lg:text-5xl font-bold text-foreground mt-3 font-[family-name:var(--font-heading)]">
+                  Parceiros Internacionais
+                </h2>
+              </div>
+            </Reveal>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              <div className="p-8 rounded-2xl bg-white border border-border">
+              <div className="p-8 rounded-2xl bg-card border border-border">
                 <h3 className="text-xl font-bold text-foreground mb-3 font-[family-name:var(--font-heading)]">FLUIDOMAT</h3>
                 <p className="text-sm text-muted leading-relaxed">
                   Representação de acoplamentos hidráulicos FLUIDOMAT Ltd. para transmissão
                   suave de potência com proteção contra sobrecarga.
                 </p>
               </div>
-              <div className="p-8 rounded-2xl bg-white border border-border">
+              <div className="p-8 rounded-2xl bg-card border border-border">
                 <h3 className="text-xl font-bold text-foreground mb-3 font-[family-name:var(--font-heading)]">EUROFLEX</h3>
                 <p className="text-sm text-muted leading-relaxed">
                   Representação EUROFLEX TRANSMISSIONS para acoplamentos de lâminas de alto

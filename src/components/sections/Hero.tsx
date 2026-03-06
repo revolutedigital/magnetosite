@@ -1,62 +1,73 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Image from "next/image";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 
 export default function Hero() {
-  const heroRef = useRef<HTMLDivElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = heroRef.current;
-    if (!el) return;
-    el.style.opacity = "1";
-    el.style.transform = "translateY(0)";
+    const handleScroll = () => {
+      if (!bgRef.current) return;
+      const y = window.scrollY;
+      bgRef.current.style.transform = `translateY(${y * 0.3}px)`;
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-secondary">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-[0.03]">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
+    <section className="relative min-h-[calc(100vh-80px)] lg:min-h-[calc(100vh-120px)] flex items-center overflow-hidden bg-secondary">
+      {/* Parallax background image */}
+      <div
+        ref={bgRef}
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat will-change-transform"
+        style={{ backgroundImage: "url('/images/bg_02_desktop_magneto.webp?v=3')" }}
+        aria-hidden="true"
+      />
+
+      {/* Color grading overlay — subtle tint since photo is already saturated */}
+      <div
+        className="absolute inset-0 z-[1]"
+        style={{ background: "rgba(15,22,35,0.2)", mixBlendMode: "multiply" }}
+        aria-hidden="true"
+      />
+
+      {/* Gradient overlay — protects text on left, reveals photo on right */}
+      <div
+        className="absolute inset-0 z-[2]"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(10,15,26,0.92) 0%, rgba(10,15,26,0.7) 45%, transparent 70%)",
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Engineering grid lines — subtle technical detail */}
+      <div className="absolute inset-0 z-[3] opacity-[0.04] pointer-events-none" aria-hidden="true">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="hero-grid" width="80" height="80" patternUnits="userSpaceOnUse">
+              <path d="M 80 0 L 0 0 0 80" fill="none" stroke="white" strokeWidth="0.5" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#hero-grid)" />
+        </svg>
       </div>
 
-      {/* Hero product image */}
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-[10%] w-[500px] h-[500px] lg:w-[650px] lg:h-[650px] opacity-20 lg:opacity-30">
-        <Image
-          src="/images/hero/hero-banner.png"
-          alt="Magneto - Freios e Embreagens"
-          fill
-          className="object-contain"
-          priority
-        />
-      </div>
-      {/* Red accent glow */}
-      <div className="absolute top-1/2 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/3" />
-
-      <Container className="relative z-10 py-20">
-        <div
-          ref={heroRef}
-          className="max-w-3xl transition-all duration-1000 ease-out opacity-0 translate-y-8"
-        >
+      {/* Content — vertically centered with slight bottom bias (golden ratio) */}
+      <Container className="relative z-10 py-12 lg:pt-0 lg:pb-6 flex items-center min-h-[calc(100vh-80px)] lg:min-h-[calc(100vh-120px)]">
+        <div className="max-w-3xl hero-stagger">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm text-white/80 mb-8 border border-white/10">
-            <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm text-white/90 mb-8 border border-white/15 hero-fade-item">
+            <span className="w-2 h-2 bg-primary rounded-full animate-pulse" aria-hidden="true" />
             Desde 2009 — Engenharia de Precisão
           </div>
 
           {/* Headline */}
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-6 leading-[1.05] font-[family-name:var(--font-heading)]">
+          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white mb-6 leading-[1.05] font-[family-name:var(--font-heading)] hero-fade-item">
             Soluções em{" "}
             <span className="text-primary">Freios</span> e{" "}
             <span className="text-primary">Embreagens</span>{" "}
@@ -64,42 +75,31 @@ export default function Hero() {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg sm:text-xl text-slate-400 mb-10 max-w-2xl leading-relaxed">
+          <p className="text-base sm:text-lg text-white/90 mb-8 max-w-2xl leading-relaxed hero-fade-item">
             Projetamos, fabricamos e aplicamos componentes de transmissão eletromagnética
             de alta performance para indústria, agricultura, elevadores e transporte.
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-4 hero-fade-item">
             <Button size="lg" href="/produtos">
               Ver Produtos
               <ArrowRight size={20} />
             </Button>
-            <Button variant="outline" size="lg" href="/contato" className="border-white/30 text-white hover:bg-white hover:text-secondary">
+            <Button
+              variant="outline"
+              size="lg"
+              href="/contato"
+              className="border-white/50 text-white bg-white/5 hover:bg-white hover:text-secondary backdrop-blur-sm"
+            >
               Solicitar Orçamento
             </Button>
-          </div>
-
-          {/* Quick stats */}
-          <div className="flex flex-wrap gap-8 mt-16 pt-8 border-t border-white/10">
-            {[
-              { value: "+15", label: "Anos de Experiência" },
-              { value: "500+", label: "Projetos Entregues" },
-              { value: "4", label: "Continentes Atendidos" },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <p className="text-3xl font-bold text-primary font-[family-name:var(--font-heading)]">
-                  {stat.value}
-                </p>
-                <p className="text-sm text-slate-500 mt-1">{stat.label}</p>
-              </div>
-            ))}
           </div>
         </div>
       </Container>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40 animate-bounce">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50 animate-bounce" aria-hidden="true">
         <span className="text-xs uppercase tracking-widest">Scroll</span>
         <ChevronDown size={20} />
       </div>

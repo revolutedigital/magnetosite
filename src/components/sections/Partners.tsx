@@ -15,16 +15,16 @@ const partners = [
 
 export default function Partners() {
   return (
-    <section className="py-12 border-y border-border">
+    <section className="py-12 border-y border-border" aria-label="Parceiros e representações">
       <Container>
         <p className="text-center text-xs uppercase tracking-widest text-muted mb-8 font-[family-name:var(--font-heading)]">
           Parceiros e Representações
         </p>
-        <div className="flex items-center justify-center gap-12 flex-wrap opacity-50">
+        <div className="flex items-center justify-center gap-12 flex-wrap">
           {partners.map((partner) => (
             <div
               key={partner}
-              className="text-lg font-bold text-muted/60 font-[family-name:var(--font-heading)] hover:text-foreground transition-colors cursor-default"
+              className="text-lg font-bold text-muted font-[family-name:var(--font-heading)] hover:text-foreground transition-colors cursor-default"
             >
               {partner}
             </div>

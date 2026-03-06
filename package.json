@@ -9,21 +9,16 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@fontsource/inter": "^5.2.8",
-    "@fontsource/jetbrains-mono": "^5.2.8",
-    "@fontsource/space-grotesk": "^5.2.10",
-    "@google/model-viewer": "^4.1.0",
-    "framer-motion": "^12.34.3",
-    "gsap": "^3.14.2",
-    "lenis": "^1.3.17",
     "lucide-react": "^0.575.0",
     "next": "16.1.6",
+    "nodemailer": "^8.0.1",
     "react": "19.2.3",
     "react-dom": "19.2.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/nodemailer": "^7.0.11",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",

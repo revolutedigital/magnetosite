@@ -1,6 +1,7 @@
 "use client";
 
 import { ButtonHTMLAttributes, forwardRef } from "react";
+import Link from "next/link";
 
 type ButtonVariant = "primary" | "secondary" | "outline" | "ghost";
 type ButtonSize = "sm" | "md" | "lg";
@@ -13,11 +14,11 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "bg-primary text-white hover:bg-primary-dark shadow-lg shadow-primary/25 hover:shadow-primary-dark/30",
+    "bg-primary text-white hover:bg-primary-dark shadow-lg shadow-primary/25 hover:shadow-primary-dark/30 hover:scale-[1.03] active:scale-[0.98]",
   secondary:
     "bg-secondary text-white hover:bg-slate-800",
   outline:
-    "border-2 border-primary text-primary hover:bg-primary hover:text-white",
+    "border-2 border-primary text-primary hover:bg-primary hover:text-white hover:scale-[1.03] active:scale-[0.98]",
   ghost:
     "text-foreground hover:bg-surface",
 };
@@ -35,10 +36,18 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const styles = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
 
     if (href) {
+      const isExternal = href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:");
+      if (isExternal) {
+        return (
+          <a href={href} className={styles} target="_blank" rel="noopener noreferrer">
+            {children}
+          </a>
+        );
+      }
       return (
-        <a href={href} className={styles}>
+        <Link href={href} className={styles}>
           {children}
-        </a>
+        </Link>
       );
     }
 
