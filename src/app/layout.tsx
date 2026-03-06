@@ -97,6 +97,22 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
+        <link
+          rel="preload"
+          href="/images/bg_02_mobile_magneto.webp"
+          as="image"
+          type="image/webp"
+          media="(max-width: 1023px)"
+          fetchPriority="high"
+        />
+        <link
+          rel="preload"
+          href="/images/bg_02_desktop_magneto.webp?v=3"
+          as="image"
+          type="image/webp"
+          media="(min-width: 1024px)"
+          fetchPriority="high"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
