@@ -10,6 +10,7 @@ import { ArrowRight, Award, Shield, CheckCircle, FileCheck } from "lucide-react"
 export const metadata: Metadata = {
   title: "Certificações",
   description: "Certificações e padrões de qualidade Magneto Brasil. Compromisso com excelência e conformidade.",
+  alternates: { canonical: "https://www.magnetobrasil.com.br/empresa/certificacoes" },
 };
 
 const certifications = [

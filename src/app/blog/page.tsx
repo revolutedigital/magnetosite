@@ -13,14 +13,15 @@ import { ArrowRight, Calendar, ChevronRight, Clock } from "lucide-react";
 export const metadata: Metadata = {
   title: "Blog",
   description: "Artigos técnicos sobre freios e embreagens eletromagnéticos, manutenção industrial, aplicações e novidades da Magneto Brasil.",
+  alternates: { canonical: "https://www.magnetobrasil.com.br/blog" },
 };
 
 const breadcrumbJsonLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Início", item: "https://magnetobrasil.com.br" },
-    { "@type": "ListItem", position: 2, name: "Blog", item: "https://magnetobrasil.com.br/blog" },
+    { "@type": "ListItem", position: 1, name: "Início", item: "https://www.magnetobrasil.com.br" },
+    { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.magnetobrasil.com.br/blog" },
   ],
 };
 

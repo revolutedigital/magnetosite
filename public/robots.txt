@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://magnetobrasil.com.br/sitemap.xml
+Sitemap: https://www.magnetobrasil.com.br/sitemap.xml

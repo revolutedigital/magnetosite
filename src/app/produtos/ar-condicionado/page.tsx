@@ -13,6 +13,7 @@ import { ArrowRight, ChevronRight, Wind } from "lucide-react";
 export const metadata: Metadata = {
   title: "Embreagens para Ar-Condicionado",
   description: "Embreagens eletromagnéticas para compressores de A/C em ônibus e veículos pesados.",
+  alternates: { canonical: "https://www.magnetobrasil.com.br/produtos/ar-condicionado" },
 };
 
 const products = [
@@ -95,7 +96,7 @@ export default function ArCondicionadoPage() {
                     </div>
                   </div>
                   <div className="pt-4 border-t border-border flex gap-2 relative z-10">
-                    <Button size="sm" className="flex-1 text-xs sm:text-sm whitespace-nowrap" href={`https://api.whatsapp.com/send?phone=5515997166881&text=${encodeURIComponent(`Olá, tudo bem? Vim do site e quero fazer um orçamento:\n\n*${product.name}*\n*URL:* https://magnetobrasil.com.br/produtos/ar-condicionado\n\nObrigado!`)}`}>
+                    <Button size="sm" className="flex-1 text-xs sm:text-sm whitespace-nowrap" href={`https://api.whatsapp.com/send?phone=5515997166881&text=${encodeURIComponent(`Olá, tudo bem? Vim do site e quero fazer um orçamento:\n\n*${product.name}*\n*URL:* https://www.magnetobrasil.com.br/produtos/ar-condicionado\n\nObrigado!`)}`}>
                       Orçamento
                     </Button>
                     <Button size="sm" variant="outline" className="flex-1 text-xs sm:text-sm whitespace-nowrap" href={`/produtos/ar-condicionado/${product.slug}`}>

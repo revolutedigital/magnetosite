@@ -27,6 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `Blog — ${category.name}`,
     description: `Artigos sobre ${category.name.toLowerCase()} em freios e embreagens eletromagnéticos.`,
+    alternates: { canonical: `https://www.magnetobrasil.com.br/blog/categoria/${slug}` },
   };
 }
 

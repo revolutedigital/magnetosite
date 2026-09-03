@@ -13,8 +13,8 @@ const breadcrumbJsonLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Início", item: "https://magnetobrasil.com.br" },
-    { "@type": "ListItem", position: 2, name: "Contato", item: "https://magnetobrasil.com.br/contato" },
+    { "@type": "ListItem", position: 1, name: "Início", item: "https://www.magnetobrasil.com.br" },
+    { "@type": "ListItem", position: 2, name: "Contato", item: "https://www.magnetobrasil.com.br/contato" },
   ],
 };
 

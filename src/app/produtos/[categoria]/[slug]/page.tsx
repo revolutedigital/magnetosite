@@ -41,12 +41,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: product.name,
     description,
     alternates: {
-      canonical: `https://magnetobrasil.com.br/produtos/${categoria}/${slug}`,
+      canonical: `https://www.magnetobrasil.com.br/produtos/${categoria}/${slug}`,
     },
     openGraph: {
       title: `${product.name} | Magneto Brasil`,
       description,
-      images: [{ url: `https://magnetobrasil.com.br${product.image}`, width: 600, height: 600, alt: `Foto do produto ${product.name}` }],
+      images: [{ url: `https://www.magnetobrasil.com.br${product.image}`, width: 600, height: 600, alt: `Foto do produto ${product.name}` }],
       type: "website",
     },
   };
@@ -67,10 +67,10 @@ export default async function ProductDetailPage({ params }: PageProps) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Início", item: "https://magnetobrasil.com.br" },
-      { "@type": "ListItem", position: 2, name: "Produtos", item: "https://magnetobrasil.com.br/produtos" },
-      { "@type": "ListItem", position: 3, name: category.name, item: `https://magnetobrasil.com.br/produtos/${categoria}` },
-      { "@type": "ListItem", position: 4, name: product.name, item: `https://magnetobrasil.com.br/produtos/${categoria}/${slug}` },
+      { "@type": "ListItem", position: 1, name: "Início", item: "https://www.magnetobrasil.com.br" },
+      { "@type": "ListItem", position: 2, name: "Produtos", item: "https://www.magnetobrasil.com.br/produtos" },
+      { "@type": "ListItem", position: 3, name: category.name, item: `https://www.magnetobrasil.com.br/produtos/${categoria}` },
+      { "@type": "ListItem", position: 4, name: product.name, item: `https://www.magnetobrasil.com.br/produtos/${categoria}/${slug}` },
     ],
   };
 
@@ -80,13 +80,13 @@ export default async function ProductDetailPage({ params }: PageProps) {
     name: product.name,
     description: product.shortDescription,
     sku: product.sku,
-    image: `https://magnetobrasil.com.br${product.image}`,
+    image: `https://www.magnetobrasil.com.br${product.image}`,
     brand: { "@type": "Brand", name: "Magneto Brasil" },
     manufacturer: { "@type": "Organization", name: "Magneto Eletropneumática LTDA" },
     category: product.category,
   };
 
-  const whatsappUrl = `https://api.whatsapp.com/send?phone=5515997166881&text=${encodeURIComponent(`Olá, tudo bem? Vim do site e quero fazer um orçamento:\n\n*${product.name}*\n*SKU:* ${product.sku}\n*URL:* https://magnetobrasil.com.br/produtos/${categoria}/${slug}\n\nObrigado!`)}`;
+  const whatsappUrl = `https://api.whatsapp.com/send?phone=5515997166881&text=${encodeURIComponent(`Olá, tudo bem? Vim do site e quero fazer um orçamento:\n\n*${product.name}*\n*SKU:* ${product.sku}\n*URL:* https://www.magnetobrasil.com.br/produtos/${categoria}/${slug}\n\nObrigado!`)}`;
 
   return (
     <>

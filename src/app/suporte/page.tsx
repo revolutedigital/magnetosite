@@ -11,14 +11,15 @@ import { ArrowRight, FileText, Phone, Mail, HelpCircle, Wrench, BookOpen } from 
 export const metadata: Metadata = {
   title: "Suporte Técnico",
   description: "Suporte técnico Magneto Brasil: assistência especializada, datasheets, manuais e orientação técnica.",
+  alternates: { canonical: "https://www.magnetobrasil.com.br/suporte" },
 };
 
 const breadcrumbJsonLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Início", item: "https://magnetobrasil.com.br" },
-    { "@type": "ListItem", position: 2, name: "Suporte", item: "https://magnetobrasil.com.br/suporte" },
+    { "@type": "ListItem", position: 1, name: "Início", item: "https://www.magnetobrasil.com.br" },
+    { "@type": "ListItem", position: 2, name: "Suporte", item: "https://www.magnetobrasil.com.br/suporte" },
   ],
 };
 

@@ -13,6 +13,7 @@ import { ArrowRight, ChevronRight, Settings } from "lucide-react";
 export const metadata: Metadata = {
   title: "Unidades Freio-Embreagem",
   description: "Unidades freio-embreagem Magneto Brasil: combinação integrada de freio e embreagem em um único conjunto compacto.",
+  alternates: { canonical: "https://www.magnetobrasil.com.br/produtos/freio-embreagem" },
 };
 
 const products = [
@@ -95,7 +96,7 @@ export default function FreioEmbreagem() {
                     </div>
                   </div>
                   <div className="pt-4 border-t border-border flex gap-2 relative z-10">
-                    <Button size="sm" className="flex-1 text-xs sm:text-sm whitespace-nowrap" href={`https://api.whatsapp.com/send?phone=5515997166881&text=${encodeURIComponent(`Olá, tudo bem? Vim do site e quero fazer um orçamento:\n\n*${product.name}*\n*URL:* https://magnetobrasil.com.br/produtos/freio-embreagem\n\nObrigado!`)}`}>
+                    <Button size="sm" className="flex-1 text-xs sm:text-sm whitespace-nowrap" href={`https://api.whatsapp.com/send?phone=5515997166881&text=${encodeURIComponent(`Olá, tudo bem? Vim do site e quero fazer um orçamento:\n\n*${product.name}*\n*URL:* https://www.magnetobrasil.com.br/produtos/freio-embreagem\n\nObrigado!`)}`}>
                       Orçamento
                     </Button>
                     <Button size="sm" variant="outline" className="flex-1 text-xs sm:text-sm whitespace-nowrap" href={`/produtos/freio-embreagem/${product.slug}`}>

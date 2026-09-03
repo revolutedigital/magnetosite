@@ -11,6 +11,7 @@ import { ArrowRight, FileText, Download, Zap, Shield, Settings, Droplets, Wind }
 export const metadata: Metadata = {
   title: "Datasheets",
   description: "Download de fichas técnicas e datasheets dos produtos Magneto Brasil.",
+  alternates: { canonical: "https://www.magnetobrasil.com.br/suporte/datasheets" },
 };
 
 const datasheets = [

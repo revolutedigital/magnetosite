@@ -10,6 +10,7 @@ import { ArrowRight, Package, CheckCircle, Zap } from "lucide-react";
 export const metadata: Metadata = {
   title: "Aplicação Packaging",
   description: "Freios e embreagens para máquinas de embalagem, envase e packaging industrial.",
+  alternates: { canonical: "https://www.magnetobrasil.com.br/aplicacoes/packaging" },
 };
 
 const benefits = [

@@ -10,14 +10,15 @@ import { ArrowRight, Tractor, Package, Printer, Building2, Bus } from "lucide-re
 export const metadata: Metadata = {
   title: "Aplicações",
   description: "Conheça os setores atendidos pela Magneto Brasil: agrícola, packaging, impressão, elevadores e transporte.",
+  alternates: { canonical: "https://www.magnetobrasil.com.br/aplicacoes" },
 };
 
 const breadcrumbJsonLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Início", item: "https://magnetobrasil.com.br" },
-    { "@type": "ListItem", position: 2, name: "Aplicações", item: "https://magnetobrasil.com.br/aplicacoes" },
+    { "@type": "ListItem", position: 1, name: "Início", item: "https://www.magnetobrasil.com.br" },
+    { "@type": "ListItem", position: 2, name: "Aplicações", item: "https://www.magnetobrasil.com.br/aplicacoes" },
   ],
 };
 

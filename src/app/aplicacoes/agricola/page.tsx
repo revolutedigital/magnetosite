@@ -10,6 +10,7 @@ import { ArrowRight, Tractor, CheckCircle, Zap } from "lucide-react";
 export const metadata: Metadata = {
   title: "Aplicação Agrícola",
   description: "Embreagens eletromagnéticas para plantadeiras, colheitadeiras e implementos agrícolas de alta performance.",
+  alternates: { canonical: "https://www.magnetobrasil.com.br/aplicacoes/agricola" },
 };
 
 const benefits = [

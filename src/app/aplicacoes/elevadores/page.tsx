@@ -10,6 +10,7 @@ import { ArrowRight, Building2, CheckCircle, Shield } from "lucide-react";
 export const metadata: Metadata = {
   title: "Aplicação Elevadores",
   description: "Freios de segurança eletromagnéticos para elevadores de passageiros e carga.",
+  alternates: { canonical: "https://www.magnetobrasil.com.br/aplicacoes/elevadores" },
 };
 
 const benefits = [

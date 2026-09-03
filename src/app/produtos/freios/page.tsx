@@ -13,6 +13,7 @@ import { ArrowRight, ChevronRight, Shield } from "lucide-react";
 export const metadata: Metadata = {
   title: "Freios Eletromagnéticos",
   description: "Freios eletromagnéticos Magneto Brasil para elevadores, guindastes, máquinas-ferramenta e automação.",
+  alternates: { canonical: "https://www.magnetobrasil.com.br/produtos/freios" },
 };
 
 const products = [
@@ -101,7 +102,7 @@ export default function FreiosPage() {
                     </div>
                   </div>
                   <div className="pt-4 border-t border-border flex gap-2 relative z-10">
-                    <Button size="sm" className="flex-1 text-xs sm:text-sm whitespace-nowrap" href={`https://api.whatsapp.com/send?phone=5515997166881&text=${encodeURIComponent(`Olá, tudo bem? Vim do site e quero fazer um orçamento:\n\n*${product.name}*\n*URL:* https://magnetobrasil.com.br/produtos/freios\n\nObrigado!`)}`}>
+                    <Button size="sm" className="flex-1 text-xs sm:text-sm whitespace-nowrap" href={`https://api.whatsapp.com/send?phone=5515997166881&text=${encodeURIComponent(`Olá, tudo bem? Vim do site e quero fazer um orçamento:\n\n*${product.name}*\n*URL:* https://www.magnetobrasil.com.br/produtos/freios\n\nObrigado!`)}`}>
                       Orçamento
                     </Button>
                     <Button size="sm" variant="outline" className="flex-1 text-xs sm:text-sm whitespace-nowrap" href={`/produtos/freios/${product.slug}`}>

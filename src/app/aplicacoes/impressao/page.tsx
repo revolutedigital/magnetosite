@@ -10,6 +10,7 @@ import { ArrowRight, Printer, CheckCircle, Zap } from "lucide-react";
 export const metadata: Metadata = {
   title: "Aplicação Impressão",
   description: "Freios e embreagens para registro de cores e controle de bobinas em impressoras industriais.",
+  alternates: { canonical: "https://www.magnetobrasil.com.br/aplicacoes/impressao" },
 };
 
 const benefits = [

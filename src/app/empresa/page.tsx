@@ -10,14 +10,15 @@ import Reveal from "@/components/ui/Reveal";
 export const metadata: Metadata = {
   title: "Empresa",
   description: "Conheça a Magneto Brasil — líder em freios e embreagens eletromagnéticos desde 2009.",
+  alternates: { canonical: "https://www.magnetobrasil.com.br/empresa" },
 };
 
 const breadcrumbJsonLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Início", item: "https://magnetobrasil.com.br" },
-    { "@type": "ListItem", position: 2, name: "Empresa", item: "https://magnetobrasil.com.br/empresa" },
+    { "@type": "ListItem", position: 1, name: "Início", item: "https://www.magnetobrasil.com.br" },
+    { "@type": "ListItem", position: 2, name: "Empresa", item: "https://www.magnetobrasil.com.br/empresa" },
   ],
 };
 

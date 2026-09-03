@@ -13,14 +13,15 @@ import { ArrowRight, ChevronRight, Zap, Shield, Settings, Droplets, Wind } from 
 export const metadata: Metadata = {
   title: "Produtos",
   description: "Catálogo completo de freios e embreagens eletromagnéticos Magneto Brasil.",
+  alternates: { canonical: "https://www.magnetobrasil.com.br/produtos" },
 };
 
 const breadcrumbJsonLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Início", item: "https://magnetobrasil.com.br" },
-    { "@type": "ListItem", position: 2, name: "Produtos", item: "https://magnetobrasil.com.br/produtos" },
+    { "@type": "ListItem", position: 1, name: "Início", item: "https://www.magnetobrasil.com.br" },
+    { "@type": "ListItem", position: 2, name: "Produtos", item: "https://www.magnetobrasil.com.br/produtos" },
   ],
 };
 
@@ -212,7 +213,7 @@ export default function ProdutosPage() {
 
                           {/* Actions */}
                           <div className="pt-4 border-t border-border flex gap-2 relative z-10">
-                            <Button size="sm" className="flex-1 text-xs sm:text-sm whitespace-nowrap" href={`https://api.whatsapp.com/send?phone=5515997166881&text=${encodeURIComponent(`Olá, tudo bem? Vim do site e quero fazer um orçamento:\n\n*${product.name}*\n*URL:* https://magnetobrasil.com.br/produtos/${cat.slug}\n\nObrigado!`)}`}>
+                            <Button size="sm" className="flex-1 text-xs sm:text-sm whitespace-nowrap" href={`https://api.whatsapp.com/send?phone=5515997166881&text=${encodeURIComponent(`Olá, tudo bem? Vim do site e quero fazer um orçamento:\n\n*${product.name}*\n*URL:* https://www.magnetobrasil.com.br/produtos/${cat.slug}\n\nObrigado!`)}`}>
                               Orçamento
                             </Button>
                             <Button size="sm" variant="outline" className="flex-1 text-xs sm:text-sm whitespace-nowrap" href={`/produtos/${cat.detailSlug}/${product.slug}`}>

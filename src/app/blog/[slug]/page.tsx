@@ -27,6 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: post.title,
     description: post.excerpt,
+    alternates: { canonical: `https://www.magnetobrasil.com.br/blog/${slug}` },
     openGraph: {
       title: `${post.title} | Blog Magneto Brasil`,
       description: post.excerpt,
@@ -187,9 +188,9 @@ export default async function BlogPostPage({ params }: PageProps) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Início", item: "https://magnetobrasil.com.br" },
-      { "@type": "ListItem", position: 2, name: "Blog", item: "https://magnetobrasil.com.br/blog" },
-      { "@type": "ListItem", position: 3, name: post.title, item: `https://magnetobrasil.com.br/blog/${slug}` },
+      { "@type": "ListItem", position: 1, name: "Início", item: "https://www.magnetobrasil.com.br" },
+      { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.magnetobrasil.com.br/blog" },
+      { "@type": "ListItem", position: 3, name: post.title, item: `https://www.magnetobrasil.com.br/blog/${slug}` },
     ],
   };
 
@@ -198,10 +199,10 @@ export default async function BlogPostPage({ params }: PageProps) {
     "@type": "Article",
     headline: post.title,
     description: post.excerpt,
-    image: `https://magnetobrasil.com.br${post.image}`,
+    image: `https://www.magnetobrasil.com.br${post.image}`,
     datePublished: post.date,
     author: { "@type": "Organization", name: "Magneto Brasil" },
-    publisher: { "@type": "Organization", name: "Magneto Brasil", logo: { "@type": "ImageObject", url: "https://magnetobrasil.com.br/images/logo/logotipo_magneto.webp" } },
+    publisher: { "@type": "Organization", name: "Magneto Brasil", logo: { "@type": "ImageObject", url: "https://www.magnetobrasil.com.br/images/logo/logotipo_magneto.webp" } },
   };
 
   return (

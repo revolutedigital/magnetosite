@@ -21,7 +21,7 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ["400", "500"],
 });
 
-const BASE_URL = "https://magnetobrasil.com.br";
+const BASE_URL = "https://www.magnetobrasil.com.br";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),

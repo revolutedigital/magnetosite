@@ -10,6 +10,7 @@ import { ArrowRight, Bus, CheckCircle, Wind } from "lucide-react";
 export const metadata: Metadata = {
   title: "Aplicação Transporte",
   description: "Embreagens eletromagnéticas para compressores de A/C em ônibus e veículos pesados.",
+  alternates: { canonical: "https://www.magnetobrasil.com.br/aplicacoes/transporte" },
 };
 
 const benefits = [
