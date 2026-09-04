@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { getSupabaseAdmin } from "@/lib/supabase";
 
 function escapeHtml(str: string): string {
   return str
@@ -35,16 +36,6 @@ export async function POST(request: Request) {
       );
     }
 
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT) || 587,
-      secure: process.env.SMTP_SECURE === "true",
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
-
     const tipoLabel: Record<string, string> = {
       orcamento: "Solicitação de Orçamento",
       suporte: "Suporte Técnico",
@@ -52,28 +43,65 @@ export async function POST(request: Request) {
       outro: "Outro",
     };
 
-    await transporter.sendMail({
-      from: `"Site Magneto Brasil" <${process.env.SMTP_USER}>`,
-      to: "davidsrevolute@gmail.com",
-      replyTo: email,
-      subject: `[Site] ${tipoLabel[tipo] || "Contato"} - ${nome}`,
-      html: `
-        <h2>Nova mensagem via site</h2>
-        <table style="border-collapse:collapse;width:100%;max-width:600px">
-          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Nome</td><td style="padding:8px;border-bottom:1px solid #eee">${escapeHtml(nome)}</td></tr>
-          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Empresa</td><td style="padding:8px;border-bottom:1px solid #eee">${empresa ? escapeHtml(empresa) : "—"}</td></tr>
-          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">E-mail</td><td style="padding:8px;border-bottom:1px solid #eee"><a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></td></tr>
-          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Telefone</td><td style="padding:8px;border-bottom:1px solid #eee">${telefone ? escapeHtml(telefone) : "—"}</td></tr>
-          <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Tipo</td><td style="padding:8px;border-bottom:1px solid #eee">${tipoLabel[tipo] || "—"}</td></tr>
-        </table>
-        <h3 style="margin-top:24px">Mensagem</h3>
-        <p style="white-space:pre-wrap;background:#f8f9fa;padding:16px;border-radius:8px">${escapeHtml(mensagem)}</p>
-      `,
-    });
+    const supabaseAdmin = getSupabaseAdmin();
+
+    const { data: submission, error: insertError } = await supabaseAdmin
+      .from("contact_submissions")
+      .insert({ nome, empresa, email, telefone, tipo, mensagem })
+      .select("id")
+      .single();
+
+    if (insertError) {
+      console.error("Erro ao registrar contato no Supabase:", insertError);
+      return NextResponse.json(
+        { error: "Erro ao enviar mensagem. Tente novamente." },
+        { status: 500 }
+      );
+    }
+
+    try {
+      const transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST,
+        port: Number(process.env.SMTP_PORT) || 587,
+        secure: process.env.SMTP_SECURE === "true",
+        auth: {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASS,
+        },
+      });
+
+      await transporter.sendMail({
+        from: `"Site Magneto Brasil" <${process.env.SMTP_USER}>`,
+        to: "davidsrevolute@gmail.com",
+        replyTo: email,
+        subject: `[Site] ${tipoLabel[tipo] || "Contato"} - ${nome}`,
+        html: `
+          <h2>Nova mensagem via site</h2>
+          <table style="border-collapse:collapse;width:100%;max-width:600px">
+            <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Nome</td><td style="padding:8px;border-bottom:1px solid #eee">${escapeHtml(nome)}</td></tr>
+            <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Empresa</td><td style="padding:8px;border-bottom:1px solid #eee">${empresa ? escapeHtml(empresa) : "—"}</td></tr>
+            <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">E-mail</td><td style="padding:8px;border-bottom:1px solid #eee"><a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></td></tr>
+            <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Telefone</td><td style="padding:8px;border-bottom:1px solid #eee">${telefone ? escapeHtml(telefone) : "—"}</td></tr>
+            <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Tipo</td><td style="padding:8px;border-bottom:1px solid #eee">${tipoLabel[tipo] || "—"}</td></tr>
+          </table>
+          <h3 style="margin-top:24px">Mensagem</h3>
+          <p style="white-space:pre-wrap;background:#f8f9fa;padding:16px;border-radius:8px">${escapeHtml(mensagem)}</p>
+        `,
+      });
+
+      await supabaseAdmin
+        .from("contact_submissions")
+        .update({ email_enviado: true })
+        .eq("id", submission.id);
+    } catch (emailError) {
+      // O lead já está salvo no Supabase mesmo que o e-mail falhe — não perde
+      // o contato, só fica sem a notificação automática por e-mail.
+      console.error("Erro ao enviar e-mail de notificação:", emailError);
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("Erro ao enviar e-mail:", error);
+    console.error("Erro ao processar contato:", error);
     return NextResponse.json(
       { error: "Erro ao enviar mensagem. Tente novamente." },
       { status: 500 }
