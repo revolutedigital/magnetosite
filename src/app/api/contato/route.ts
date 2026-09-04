@@ -64,7 +64,8 @@ export async function POST(request: Request) {
 
       const { error: sendError } = await resend.emails.send({
         from: "Site Magneto Brasil <site@magnetobrasil.com.br>",
-        to: "davidsrevolute@gmail.com",
+        to: "magneto@magnetobrasil.com.br",
+        cc: "ronald.barboza2004@gmail.com",
         replyTo: email,
         subject: `[Site] ${tipoLabel[tipo] || "Contato"} - ${nome}`,
         html: `
