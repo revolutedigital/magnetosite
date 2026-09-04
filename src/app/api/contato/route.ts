@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 import { getSupabaseAdmin } from "@/lib/supabase";
 
 function escapeHtml(str: string): string {
@@ -60,18 +60,10 @@ export async function POST(request: Request) {
     }
 
     try {
-      const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: Number(process.env.SMTP_PORT) || 587,
-        secure: process.env.SMTP_SECURE === "true",
-        auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASS,
-        },
-      });
+      const resend = new Resend(process.env.RESEND_API_KEY);
 
-      await transporter.sendMail({
-        from: `"Site Magneto Brasil" <${process.env.SMTP_USER}>`,
+      const { error: sendError } = await resend.emails.send({
+        from: "Site Magneto Brasil <site@magnetobrasil.com.br>",
         to: "davidsrevolute@gmail.com",
         replyTo: email,
         subject: `[Site] ${tipoLabel[tipo] || "Contato"} - ${nome}`,
@@ -88,6 +80,8 @@ export async function POST(request: Request) {
           <p style="white-space:pre-wrap;background:#f8f9fa;padding:16px;border-radius:8px">${escapeHtml(mensagem)}</p>
         `,
       });
+
+      if (sendError) throw sendError;
 
       await supabaseAdmin
         .from("contact_submissions")
