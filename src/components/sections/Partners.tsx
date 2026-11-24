@@ -4,7 +4,6 @@ import Container from "@/components/ui/Container";
 
 const partners = [
   "FLUIDOMAT",
-  "EUROFLEX",
   "Cliente A",
   "Cliente B",
   "Cliente C",

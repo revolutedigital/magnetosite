@@ -360,7 +360,7 @@ A escolha depende da sua aplicação:
 - **Escolha hidráulico** quando precisa de partida suave, proteção contra sobrecarga e absorção de vibrações
 - **Escolha lâminas** quando precisa de máxima eficiência, zero manutenção e operação em altas rotações
 
-A Magneto Brasil oferece ambas as soluções: acoplamentos hidráulicos FLUIDOMAT e acoplamentos de lâminas EUROFLEX. Nossa equipe técnica pode ajudar na seleção do melhor tipo para sua aplicação.`,
+A Magneto Brasil oferece ambas as soluções: acoplamentos hidráulicos FLUIDOMAT e acoplamentos de lâminas. Nossa equipe técnica pode ajudar na seleção do melhor tipo para sua aplicação.`,
     category: "Tecnologia",
     categorySlug: "tecnologia",
     image: "/images/produtos/produto-12.png",

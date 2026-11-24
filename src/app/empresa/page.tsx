@@ -25,7 +25,7 @@ const breadcrumbJsonLd = {
 const timeline = [
   { year: "2009", title: "Fundação", description: "Magneto Eletropneumática é fundada em Sorocaba/SP com foco em soluções eletromagnéticas." },
   { year: "2012", title: "Expansão Agrícola", description: "Início do fornecimento de embreagens para o setor agrícola, tornando-se referência no segmento." },
-  { year: "2015", title: "Representação Internacional", description: "Parceria com FLUIDOMAT (acoplamentos hidráulicos) e EUROFLEX (acoplamentos de lâminas)." },
+  { year: "2015", title: "Representação Internacional", description: "Parceria com FLUIDOMAT para acoplamentos hidráulicos." },
   { year: "2018", title: "Mercado Internacional", description: "Exportação para América Latina, Estados Unidos e Europa." },
   { year: "2022", title: "Inovação Contínua", description: "Ampliação do portfólio com novas linhas de freios para elevadores e embreagens para A/C." },
   { year: "2024", title: "Liderança de Mercado", description: "Consolidação como líder em embreagens agrícolas e freios para elevadores no Brasil." },
@@ -200,26 +200,19 @@ export default function EmpresaPage() {
             <Reveal>
               <div className="text-center mb-16">
                 <span className="text-sm font-semibold text-primary uppercase tracking-wider font-[family-name:var(--font-heading)]">
-                  Representações
+                  Representação
                 </span>
                 <h2 className="text-3xl lg:text-5xl font-bold text-foreground mt-3 font-[family-name:var(--font-heading)]">
-                  Parceiros Internacionais
+                  Parceiro Internacional
                 </h2>
               </div>
             </Reveal>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              <div className="p-8 rounded-2xl bg-card border border-border">
+            <div className="max-w-2xl mx-auto">
+              <div className="p-8 rounded-2xl bg-card border border-border text-center">
                 <h3 className="text-xl font-bold text-foreground mb-3 font-[family-name:var(--font-heading)]">FLUIDOMAT</h3>
                 <p className="text-sm text-muted leading-relaxed">
                   Representação de acoplamentos hidráulicos FLUIDOMAT Ltd. para transmissão
                   suave de potência com proteção contra sobrecarga.
-                </p>
-              </div>
-              <div className="p-8 rounded-2xl bg-card border border-border">
-                <h3 className="text-xl font-bold text-foreground mb-3 font-[family-name:var(--font-heading)]">EUROFLEX</h3>
-                <p className="text-sm text-muted leading-relaxed">
-                  Representação EUROFLEX TRANSMISSIONS para acoplamentos de lâminas de alto
-                  desempenho, ideais para turbinas a vapor e bombas de alta velocidade.
                 </p>
               </div>
             </div>

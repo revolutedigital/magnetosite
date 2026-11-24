@@ -12,7 +12,7 @@ import { ArrowRight, ChevronRight, Droplets } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Acoplamentos Hidráulicos",
-  description: "Acoplamentos hidráulicos e de lâminas Magneto Brasil. Representação FLUIDOMAT e EUROFLEX.",
+  description: "Acoplamentos hidráulicos e de lâminas Magneto Brasil. Representação FLUIDOMAT.",
   alternates: { canonical: "https://www.magnetobrasil.com.br/produtos/acoplamentos" },
 };
 
@@ -41,7 +41,7 @@ export default function AcoplamentosPage() {
             </h1>
             <p className="text-lg text-slate-300 max-w-2xl">
               Transmissão suave de potência com proteção contra sobrecarga.
-              Representação exclusiva FLUIDOMAT e EUROFLEX no Brasil.
+              Representação exclusiva FLUIDOMAT no Brasil.
             </p>
           </Container>
         </section>
@@ -118,25 +118,18 @@ export default function AcoplamentosPage() {
           <Container>
             <div className="text-center mb-12">
               <span className="text-sm font-semibold text-primary uppercase tracking-wider font-[family-name:var(--font-heading)]">
-                Representações Internacionais
+                Representação Internacional
               </span>
               <h2 className="text-3xl lg:text-5xl font-bold text-foreground mt-3 font-[family-name:var(--font-heading)]">
-                Parceiros de Classe Mundial
+                Parceiro de Classe Mundial
               </h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              <div className="p-8 rounded-2xl bg-white border border-border">
+            <div className="max-w-2xl mx-auto">
+              <div className="p-8 rounded-2xl bg-white border border-border text-center">
                 <h3 className="text-xl font-bold text-foreground mb-3 font-[family-name:var(--font-heading)]">FLUIDOMAT</h3>
                 <p className="text-sm text-muted leading-relaxed">
                   Acoplamentos hidráulicos FLUIDOMAT Ltd. para transmissão suave de potência
                   com proteção contra sobrecarga em aplicações industriais.
-                </p>
-              </div>
-              <div className="p-8 rounded-2xl bg-white border border-border">
-                <h3 className="text-xl font-bold text-foreground mb-3 font-[family-name:var(--font-heading)]">EUROFLEX</h3>
-                <p className="text-sm text-muted leading-relaxed">
-                  Acoplamentos de lâminas EUROFLEX TRANSMISSIONS de alto desempenho,
-                  ideais para turbinas a vapor e bombas de alta velocidade.
                 </p>
               </div>
             </div>
