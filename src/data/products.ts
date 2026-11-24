@@ -380,13 +380,13 @@ export const products: Product[] = [
     torque: "\u2014",
     voltage: "\u2014",
     shortDescription: "Acoplamento hidráulico (hidrodinâmico) para transmissão suave de potência com proteção contra sobrecarga. Representação FLUIDOMAT.",
-    description: "O acoplamento hidráulico AH-110 funciona pelo princípio hidrodinâmico de bomba-turbina: o rotor bomba, acionado pelo motor, gira e cria um fluxo de fluido hidráulico (óleo) dentro da carcaça. Esse fluxo gera movimento no rotor turbina, transmitindo potência ao eixo conduzido de forma suave e progressiva, sem conexão mecânica rígida entre os eixos.\n\nEsta transmissão suave permite que o motor parta em vazio, atingindo a rotação nominal antes de transferir carga ao equipamento acionado. Em caso de sobrecarga, o acoplamento escorrega protegendo o motor e a transmissão. A Magneto Brasil é representante exclusiva da FLUIDOMAT Ltd., uma das maiores fabricantes mundiais de acoplamentos hidráulicos para mineração, cimento e indústrias pesadas.",
+    description: "O acoplamento hidráulico AH-110 funciona pelo princípio hidrodinâmico de bomba-turbina: o rotor bomba, acionado pelo motor, gira e cria um fluxo de fluido hidráulico (óleo) dentro da carcaça. Esse fluxo gera movimento no rotor turbina, transmitindo potência ao eixo conduzido de forma suave e progressiva, sem conexão mecânica rígida entre os eixos.\n\nEsta transmissão suave permite que o motor parta em vazio, atingindo a rotação nominal antes de transferir carga ao equipamento acionado. Em caso de sobrecarga, o acoplamento escorrega protegendo o motor e a transmissão. A Magneto Brasil é representante da FLUIDOMAT Ltd., uma das maiores fabricantes mundiais de acoplamentos hidráulicos para mineração, cimento e indústrias pesadas.",
     features: [
       "Transmissão suave e progressiva de potência",
       "Proteção intrínseca contra sobrecarga",
       "Partida do motor em vazio — reduz pico de corrente",
       "Sem conexão mecânica rígida — absorve vibrações",
-      "Representação exclusiva FLUIDOMAT Ltd. no Brasil",
+      "Representação FLUIDOMAT Ltd.",
       "Longa vida útil com manutenção mínima",
     ],
     applications: [

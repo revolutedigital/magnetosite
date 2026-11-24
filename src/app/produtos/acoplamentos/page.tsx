@@ -41,7 +41,7 @@ export default function AcoplamentosPage() {
             </h1>
             <p className="text-lg text-slate-300 max-w-2xl">
               Transmissão suave de potência com proteção contra sobrecarga.
-              Representação exclusiva FLUIDOMAT no Brasil.
+              Representação FLUIDOMAT.
             </p>
           </Container>
         </section>
